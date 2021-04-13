@@ -8,10 +8,15 @@ struct pixel {
 	float b;
 };
 
+// red sort
+bool operator<(const pixel& lhs, const pixel& rhs) {
+	return lhs.r < rhs.r;
+}
+
 constexpr size_t HEIGHT = 1024;
 constexpr size_t WIDTH = 1024;
 
-void generateRandomBuffer(pixel* buf) {
+void generateRandomBuffer(std::vector<pixel>& buf) {
 	std::random_device rd;
 	std::mt19937 gen(rd());
 
@@ -20,10 +25,9 @@ void generateRandomBuffer(pixel* buf) {
 		buf[i].g = gen() % 255;
 		buf[i].b = gen() % 255;
 	}
-
 }
 
-void render(const char* file, pixel* buffer) {
+void render(const char* file, const std::vector<pixel>& buffer) {
 	std::ofstream img(file);
 	img << "P3" << std::endl;
 	img << HEIGHT << " " << WIDTH << std::endl;
@@ -37,12 +41,13 @@ void render(const char* file, pixel* buffer) {
 }
 
 int main() {
-	pixel* framebuffer = new pixel[HEIGHT*WIDTH];
+    std::vector<pixel> framebuffer(HEIGHT*WIDTH);
 
 	generateRandomBuffer(framebuffer);
 	render("marsenne_random.ppm", framebuffer);
-	
-	delete[] framebuffer;
+
+	std::sort(framebuffer.begin(), framebuffer.end());
+	render("marsenne_random_sorted(red,<).ppm", framebuffer);
 
 	return 0; 
 }
