@@ -14,8 +14,13 @@ struct pixel {
 // }
 
 // green sort
+// bool operator<(const pixel& lhs, const pixel& rhs) {
+// 	return lhs.g < rhs.g;
+// }
+
+// blue sort
 bool operator<(const pixel& lhs, const pixel& rhs) {
-	return lhs.g < rhs.g;
+	return lhs.b < rhs.b;
 }
 
 constexpr size_t HEIGHT = 1024;
@@ -52,7 +57,7 @@ int main() {
 	render("marsenne_random.ppm", framebuffer);
 
 	std::sort(framebuffer.begin(), framebuffer.end());
-	render("marsenne_random_sorted(green, <).ppm", framebuffer);
+	render("marsenne_random_sorted(blue, <).ppm", framebuffer);
 
 	return 0; 
 }
