@@ -10,16 +10,8 @@ struct pixel {
 constexpr size_t HEIGHT = 1024;
 constexpr size_t WIDTH = 1024;
 
-int main() {
-	pixel* buffer = new pixel[HEIGHT*WIDTH];
-
-	for (size_t i = 0; i < HEIGHT* WIDTH; i++) {
-		buffer[i].r = 100;
-		buffer[i].g = 0;
-		buffer[i].b = 90;
-	}
-
-	std::ofstream img("out.ppm");
+void render(const char* file, pixel* buffer) {
+	std::ofstream img(file);
 	img << "P3" << std::endl;
 	img << HEIGHT << " " << WIDTH << std::endl;
 	img << 255 << std::endl;
@@ -29,8 +21,20 @@ int main() {
 	}
 
 	img.close();
+}
+
+int main() {
+	pixel* framebuffer = new pixel[HEIGHT*WIDTH];
+
+	for (size_t i = 0; i < HEIGHT* WIDTH; i++) {
+		framebuffer[i].r = 100;
+		framebuffer[i].g = 0;
+		framebuffer[i].b = 90;
+	}
+
+	render("singlecolor.ppm", framebuffer);
 	
-	delete[] buffer;
+	delete[] framebuffer;
 
 	return 0; 
 }
