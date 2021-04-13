@@ -26,13 +26,26 @@ void render(const char* file, pixel* buffer) {
 int main() {
 	pixel* framebuffer = new pixel[HEIGHT*WIDTH];
 
+	// set color for framebuffer
 	for (size_t i = 0; i < HEIGHT* WIDTH; i++) {
 		framebuffer[i].r = 100;
 		framebuffer[i].g = 0;
 		framebuffer[i].b = 90;
 	}
-
 	render("singlecolor.ppm", framebuffer);
+
+	// draw green diagonal line
+	for (size_t y = 0; y < HEIGHT; y++) {
+		for (size_t x = 0; x < WIDTH; x++) {
+			if (x == y) { 
+				framebuffer[x + y*WIDTH].r = 0;
+				framebuffer[x + y*WIDTH].b = 0;
+				framebuffer[x + y*WIDTH].g = 255;
+			}
+		}
+	}
+
+	render("greenline.ppm", framebuffer);
 	
 	delete[] framebuffer;
 
