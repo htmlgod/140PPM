@@ -10,6 +10,16 @@ Progress Check:
 - [ ] Figures
 - [ ] Sin(x) graph
 - [ ] Raytracing (sphere intersect)
+- [ ] Raytracing (sphere materials) (diffuse color)
+- [ ] Raytracing (Lighting) (diffuse lighting)
+- [ ] Raytracing (specular lighting)
+- [ ] Raytracing (shadows)
+- [ ] Raytracing (reflections)
+- [ ] Raytracing (refractions)
+- [ ] Raytracing (plane)
+- [ ] Raytracing (environment map)
+- [ ] Raytracing (fbx models render)
+- [ ] Antialiasing
 
 REF:
 
