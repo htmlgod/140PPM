@@ -4,7 +4,7 @@ Repo for learning graphics and etc.
 
 Progress Check: 
 
-- [ ] Single color image 
+- [x] Single color image 
 - [ ] Random pixels
 - [ ] Gradient
 - [ ] Figures
