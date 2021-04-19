@@ -5,7 +5,9 @@ Repo for learning graphics and etc.
 Progress Check: 
 
 - [x] Single color image 
-- [ ] Random pixels
+- [x] Random pixels
+- [ ] RGB to HSL/HSV conversion
+- [ ] Pixel sorting
 - [ ] Gradient
 - [ ] Figures
 - [ ] Sin(x) graph
